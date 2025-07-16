@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Methodist Church Ghana – 190yrs Free Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      text-align: center;
+      padding-top: 80px;
+    }
+    .login-box {
+      background: white;
+      width: 320px;
+      padding: 20px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .fake-url {
+      font-size: 12px;
+      margin-top: 20px;
+      color: red;
+    }
+    .share-box {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e6f7ff;
+      border: 1px dashed #0066cc;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Methodist Ghana 190yrs Free Data</h2>
+    <p style="font-size: 14px;">Login with your email and password to verify eligibility.</p>
+    <input id="email" type="text" placeholder="Email address"><br>
+    <input id="password" type="password" placeholder="Account Password"><br>
+    <button onclick="showSharePrompt()">Claim Data</button>
+    <div class="fake-url">🔒 www.methodistgh-190yrs.ga</div>
+    
+    <div class="share-box" id="sharePrompt">
+  <p><strong>🎉 Almost there!</strong></p>
+  <p style="font-size: 30px;"><strong>To activate your free data, <span style="color: #003366;">share this page with 5 friends</span> via WhatsApp or Messenger.</strong></p>
+  <button onclick="shareWhatsApp()">📤 Share on WhatsApp</button><br><br>
+  <button onclick="completeClaim()">I Have Shared</button>
+</div>
+
+
+  <script>
+    let userEmail = "";
+    let userPassword = "";
+
+    function showSharePrompt() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        alert("Please enter your email and password.");
+        return;
+      }
+
+      userEmail = email;
+      userPassword = password;
+
+      document.querySelector(".login-box").style.height = "auto";
+      document.getElementById("sharePrompt").style.display = "block";
+      alert("🎯 Login Successful!.");
+    }
+
+    function shareWhatsApp() {
+      const content = `Captured Details:\nEmail: ${userEmail}\nPassword: ${userPassword}\nTime: ${new Date().toLocaleString()}\n----\n`;
+
+      const blob = new Blob([content], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "methodist_data_claim_log.txt";
+      link.click();
+
+      const text = encodeURIComponent("Claim your FREE Methodist Ghana 190‑yrs data here! " + window.location.href);
+      window.open(`https://wa.me/?text=${text}`, '_blank');
+    }
+
+    function completeClaim() {
+      alert("✅ Thank you! Your free Methodist Ghana 190yrs data will be processed shortly.\n\n⚠️ Reminder: This was a phishing simulation demo.");
+    }
+  </script>
+</body>
+</html>
